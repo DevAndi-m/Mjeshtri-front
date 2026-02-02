@@ -1,13 +1,13 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './Components/header';
 import Home from './Components/Home/Home';
+import LoginPage from './pages/LoginPage.jsx';
+import SignUpPage from './pages/SignUpPage.jsx';
 
 // const Home = () => <div className="p-8 text-center text-3xl">Welcome to Mjeshtri 🛠️</div>;
 const Marketplace = () => <div className="p-8 text-center text-3xl">Expert Marketplace 👷‍♂️</div>;
 const About = () => <div className="p-8 text-center text-3xl">About Us 📖</div>;
 const Contact = () => <div className="p-8 text-center text-3xl">Contact Support 📧</div>;
-const Login = () => <div className="p-8 text-center text-3xl">Login Page 🔐</div>;
-const Register = () => <div className="p-8 text-center text-3xl">Register Page 📝</div>;
 
 function App() {
   return ( 
@@ -20,8 +20,8 @@ function App() {
             <Route path="/marketplace" element={<Marketplace />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/register" element={<SignUpPage />} />
           </Routes>
         </main>
       </div>
