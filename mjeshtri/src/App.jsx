@@ -1,8 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './Components/header';
 import Home from './Components/Home/Home';
-import LoginPage from './pages/LoginPage.jsx';
-import SignUpPage from './pages/SignUpPage.jsx';
 
 // const Home = () => <div className="p-8 text-center text-3xl">Welcome to Mjeshtri 🛠️</div>;
 const Marketplace = () => <div className="p-8 text-center text-3xl">Expert Marketplace 👷‍♂️</div>;
