@@ -1,8 +1,9 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useAuth } from "../context/authContext";
 
 const Header = () => {
   const { user, logout } = useAuth();
+  const location = useLocation();
 
   return (
     <nav className="bg-white border-b border-gray-200 px-4 py-3 shadow-sm">
@@ -15,10 +16,10 @@ const Header = () => {
 
         {/* Links */}
         <div className="hidden md:flex space-x-8 font-medium text-gray-600">
-          <Link to="/" className="hover:text-blue-600">Home</Link>
-          <Link to="/marketplace" className="hover:text-blue-600">Marketplace</Link>
-          <Link to="/about" className="hover:text-blue-600">About</Link>
-          <Link to="/contact" className="hover:text-blue-600">Contact</Link>
+          <Link to="/" className={`hover:text-blue-600 ${location.pathname === "/" ? "text-blue-600" : ""}`}>Home</Link>
+          <Link to="/marketplace" className={`hover:text-blue-600 ${location.pathname === "/marketplace" ? "text-blue-600" : ""}`}>Marketplace</Link>
+          <Link to="/about" className={`hover:text-blue-600 ${location.pathname === "/about" ? "text-blue-600" : ""}`}>About</Link>
+          <Link to="/contact" className={`hover:text-blue-600 ${location.pathname === "/contact" ? "text-blue-600   " : ""}`}>Contact</Link>
         </div>
 
         {/* Auth Area */}
@@ -37,7 +38,7 @@ const Header = () => {
             </>
           ) : (
             <>
-              <Link to="/login" className="px-4 py-2 text-gray-700 hover:text-blue-600">
+              <Link to="/login" className={`px-4 py-2 text-gray-700 hover:text-blue-600 ${location.pathname === "/login" ? "dark:text-gray-900" : ""}`}>
                 Login
               </Link>
               <Link to="/register" className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">

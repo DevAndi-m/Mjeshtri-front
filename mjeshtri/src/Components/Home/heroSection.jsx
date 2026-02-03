@@ -1,12 +1,27 @@
 const HeroSection = () => {
   return (
     <section>
-        <div></div>
-        <div>
-            <div className="bg-gray-200 w-full h-96 flex items-center justify-center">
-                <img src="https://media.istockphoto.com/id/466332715/photo/woman-contractor-construction-worker-isolated-on-white-background.jpg?s=612x612&w=0&k=20&c=zdOFLHl8B7acRhI68VCgu_Q4_OpcmtwjTcvCLtUDnt8=" className="w-full h-full object-cover" alt="Hero" />
-            </div>
+    <div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 gap-4 md:grid-cols-4 md:items-center md:gap-8">
+        <div class="md:col-span-3">
+          <img src="https://hookagency.com/wp-content/uploads/2024/08/contractor-onboarding.jpg" class="rounded-3xl" alt=""></img>
         </div>
+
+        <div class="md:col-span-1">
+          <div class="max-w-prose md:max-w-none">
+            <h2 class="text-2xl font-semibold text-gray-900 sm:text-3xl">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            </h2>
+
+            <p class="mt-4 text-pretty text-gray-700">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur doloremque saepe
+              architecto maiores repudiandae amet perferendis repellendus, reprehenderit voluptas
+              sequi.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
     </section>
   );
 };
