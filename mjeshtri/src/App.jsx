@@ -7,9 +7,9 @@ import SignUpPage from './pages/SignUpPage.jsx';
 import Footer from './Components/footer.jsx';
 import NoPage from './pages/NoPage.jsx';
 import ContactPage from './pages/ContactPage.jsx';
+import MarketplacePage from './pages/MarketplacePage.jsx';
 
 // const Home = () => <div className="p-8 text-center text-3xl">Welcome to Mjeshtri 🛠️</div>;
-const Marketplace = () => <div className="p-8 text-center text-3xl">Expert Marketplace 👷‍♂️</div>;
 
 function App() {
   return ( 
@@ -19,7 +19,7 @@ function App() {
         <main className="">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/marketplace" element={<Marketplace />} />
+            <Route path="/marketplace" element={<MarketplacePage />} />
             <Route path="/about" element={<About login={<LoginPage />} register={<SignUpPage />} />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/login" element={<LoginPage />} />
