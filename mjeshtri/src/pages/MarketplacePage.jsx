@@ -1,12 +1,11 @@
 import FilterSection from "../Components/Marketplace/filterSection";
-import CardSection from "../Components/Marketplace/cardSection";
 
-const marketplacePage = () => {
+const MarketplacePage = () => {
     return (
         <>
             <FilterSection />
         </>
-    );
+    )
 }
 
-export default marketplacePage;
+export default MarketplacePage;

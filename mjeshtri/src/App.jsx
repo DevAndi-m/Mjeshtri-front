@@ -8,8 +8,7 @@ import Footer from './Components/footer.jsx';
 import NoPage from './pages/NoPage.jsx';
 import ContactPage from './pages/ContactPage.jsx';
 import MarketplacePage from './pages/MarketplacePage.jsx';
-
-// const Home = () => <div className="p-8 text-center text-3xl">Welcome to Mjeshtri 🛠️</div>;
+import ExpertPage from './pages/ExpertPage.jsx';
 
 function App() {
   return ( 
@@ -25,6 +24,7 @@ function App() {
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<SignUpPage />} />
             <Route path="*" element={<NoPage />} />
+            <Route path="/Expert/:id" element={<ExpertPage />} />
           </Routes>
         </main>
         <Footer />

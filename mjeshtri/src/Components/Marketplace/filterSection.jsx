@@ -1,6 +1,36 @@
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 import CardSection from "./cardSection";
 
+const { VITE_API_BASE_URL } = import.meta.env;
+
 const FilterSection = () => {
+
+    const [availableCategories, setAvailableCategories] = useState([]);
+    const [selectedCategories, setSelectedCategories] = useState([]);
+    const [minPrice, setMinPrice] = useState(0);
+    const [maxPrice, setMaxPrice] = useState(600);
+
+    useEffect(() => {
+        const getCategories = async () => {
+            try {
+                const response = await axios.get(`${VITE_API_BASE_URL}/api/expert/categories`);
+                setAvailableCategories(response.data);
+            } catch (error) {
+                console.error("Error fetching categories:", error);
+            }
+        };
+        getCategories();
+    }, []);
+
+    const handleCategoryChange = (category) => {
+        if (selectedCategories.includes(category)) {
+            setSelectedCategories(selectedCategories.filter(c => c !== category));
+        } else {
+            setSelectedCategories([...selectedCategories, category]);
+        }
+    };
+
     return (
         <>
         <div class="space-y-4 px-4 py-2 sm:px-6 lg:mx-100 lg:px-10 lg:py-8">
@@ -17,10 +47,10 @@ const FilterSection = () => {
 
             <div class="divide-y divide-gray-300 border-t border-gray-300 bg-white">
             <div class="flex items-center justify-between px-3 py-2">
-                <span class="text-sm text-gray-700"> All selected </span>
+                <span class="text-sm text-gray-700"> {selectedCategories.length} selected </span>
 
-                <button type="button" class="text-sm text-gray-700 underline transition-colors hover:text-gray-900">
-                Reset Filters
+                <button type="button" onClick={() => setSelectedCategories([])} class="text-sm text-gray-700 underline transition-colors hover:text-gray-900">
+                    Reset Filters
                 </button>
             </div>
 
@@ -28,23 +58,21 @@ const FilterSection = () => {
                 <legend class="sr-only">Checkboxes</legend>
 
                 <div class="flex flex-col items-start gap-3">
-                <label for="Option1" class="inline-flex items-center gap-3">
-                    <input type="checkbox" class="size-5 rounded border-gray-300 shadow-sm" id="Option1" />
-
-                    <span class="text-sm font-medium text-gray-700"> Option 1 </span>
-                </label>
-
-                <label for="Option2" class="inline-flex items-center gap-3">
-                    <input type="checkbox" class="size-5 rounded border-gray-300 shadow-sm" id="Option2" />
-
-                    <span class="text-sm font-medium text-gray-700"> Option 2 </span>
-                </label>
-
-                <label for="Option3" class="inline-flex items-center gap-3">
-                    <input type="checkbox" class="size-5 rounded border-gray-300 shadow-sm" id="Option3" />
-
-                    <span class="text-sm font-medium text-gray-700"> Option 3 </span>
-                </label>
+                {/* 4. DYNAMIC MAPPING STARTS HERE */}
+                {availableCategories.map((category, index) => (
+                    <label key={index} htmlFor={`Category-${index}`} class="inline-flex items-center gap-3 cursor-pointer">
+                        <input 
+                            type="checkbox" 
+                            class="size-5 rounded border-gray-300 shadow-sm" 
+                            id={`Category-${index}`} 
+                            checked={selectedCategories.includes(category)}
+                            onChange={() => handleCategoryChange(category)}
+                        />
+                        <span class="text-sm font-medium text-gray-700"> {category} </span>
+                    </label>
+                ))}
+                {/* IF NO CATEGORIES EXIST */}
+                {availableCategories.length === 0 && <span class="text-sm text-gray-400">No experts found.</span>}
                 </div>
             </fieldset>
             </div>
@@ -63,30 +91,45 @@ const FilterSection = () => {
 
             <div class="divide-y divide-gray-300 border-t border-gray-300 bg-white">
             <div class="flex items-center justify-between px-3 py-2">
-                <span class="text-sm text-gray-700"> Max price is $600 </span>
+                <span class="text-sm text-gray-700"> Max price is ${maxPrice} </span>
 
-                <button type="button" class="text-sm text-gray-700 underline transition-colors hover:text-gray-900">
+                <button 
+                    type="button" 
+                    onClick={() => {setMinPrice(0); setMaxPrice(600);}}
+                    class="text-sm text-gray-700 underline transition-colors hover:text-gray-900"
+                >
                 Reset
                 </button>
             </div>
 
             <div class="flex items-center gap-3 p-3">
-                <label for="MinPrice">
+                <label htmlFor="MinPrice">
                 <span class="text-sm text-gray-700"> Min </span>
-
-                <input type="number" id="MinPrice" value="0" class="p-2 mt-0.5 w-full rounded border-gray-300 shadow-sm sm:text-sm" />
+                <input 
+                    type="number" 
+                    id="MinPrice" 
+                    value={minPrice} 
+                    onChange={(e) => setMinPrice(e.target.value)}
+                    class="p-2 mt-0.5 w-full rounded border-gray-300 shadow-sm sm:text-sm" 
+                />
                 </label>
 
-                <label for="MaxPrice">
+                <label htmlFor="MaxPrice">
                 <span class="text-sm text-gray-700"> Max </span>
-
-                <input type="number" id="MaxPrice" value="600" class="p-2 mt-0.5 w-full rounded border-gray-300 shadow-sm sm:text-sm" />
+                <input 
+                    type="number" 
+                    id="MaxPrice" 
+                    value={maxPrice} 
+                    onChange={(e) => setMaxPrice(e.target.value)}
+                    class="p-2 mt-0.5 w-full rounded border-gray-300 shadow-sm sm:text-sm" 
+                />
                 </label>
             </div>
             </div>
         </details>
         </div>
-        <CardSection />
+        
+        <CardSection filters={{ categories: selectedCategories.join(','), minPrice, maxPrice }}/>
         </>
     );
 }
