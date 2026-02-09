@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 const BannerSection = () => {
     return (
         <section class="bg-white lg:grid lg:h-screen lg:place-content-center">
@@ -15,13 +17,13 @@ const BannerSection = () => {
             </p>
 
             <div class="mt-4 flex justify-center gap-4 sm:mt-6">
-                <a class="inline-block rounded border border-blue-600 bg-blue-600 px-5 py-3 font-medium text-white shadow-sm transition-colors hover:bg-blue-700" href="#">
+                <Link to="/register" class="inline-block rounded border border-blue-600 bg-blue-600 px-5 py-3 font-medium text-white shadow-sm transition-colors hover:bg-blue-700">
                 Register
-                </a>
+                </Link>
 
-                <a class="inline-block rounded border border-gray-200 px-5 py-3 font-medium text-gray-700 shadow-sm transition-colors hover:bg-gray-50 hover:text-gray-900" href="#">
+                <Link to="/login" class="inline-block rounded border border-gray-200 px-5 py-3 font-medium text-gray-700 shadow-sm transition-colors hover:bg-gray-50 hover:text-gray-900" href="#">
                 Login
-                </a>
+                </Link>
             </div>
             </div>
         </div>
