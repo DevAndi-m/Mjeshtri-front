@@ -7,19 +7,22 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(() => {
     const token = localStorage.getItem("token");
     const fullName = localStorage.getItem("fullName");
+    const email = localStorage.getItem("email");
     const role = localStorage.getItem("role");
 
-    return token && fullName ? { fullName, role, token } : null;
+    return token && fullName ? { fullName, role, token, email } : null;
   });
 
   const login = (data) => {
     localStorage.setItem("token", data.token);
     localStorage.setItem("fullName", data.fullName);
+    localStorage.setItem("email", data.email);
     localStorage.setItem("role", data.role);
 
     setUser({
       fullName: data.fullName,
       role: data.role,
+      email: data.email,
       token: data.token
     });
   };
@@ -40,9 +43,9 @@ export const AuthProvider = ({ children }) => {
 // of multiple exports. This structure is generally fine, 
 // but ensure you aren't exporting other non-component variables here.
 export const useAuth = () => {
-    const context = useContext(AuthContext);
-    if (!context) {
-        throw new Error("useAuth must be used within an AuthProvider");
-    }
-    return context;
+  const context = useContext(AuthContext);
+  if (!context) {
+    throw new Error("useAuth must be used within an AuthProvider");
+  }
+  return context;
 };

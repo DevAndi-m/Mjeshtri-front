@@ -26,9 +26,9 @@ const Header = () => {
         <div className="flex items-center space-x-4">
           {user ? (
             <>
-              <span className="text-gray-700 font-medium">
+              <Link to='/profile' className="text-gray-700 font-medium hower:text-blue-600">
                 {user.fullName}
-              </span>
+              </Link>
               <button
                 onClick={logout}
                 className="px-4 py-2 bg-gray-100 rounded-lg hover:bg-gray-200"

@@ -9,6 +9,7 @@ import NoPage from './pages/NoPage.jsx';
 import ContactPage from './pages/ContactPage.jsx';
 import MarketplacePage from './pages/MarketplacePage.jsx';
 import ExpertPage from './pages/ExpertPage.jsx';
+import ProfilePage from './pages/ProfilePage.jsx';
 
 function App() {
   return ( 
@@ -25,6 +26,7 @@ function App() {
             <Route path="/register" element={<SignUpPage />} />
             <Route path="*" element={<NoPage />} />
             <Route path="/Expert/:id" element={<ExpertPage />} />
+            <Route path="/profile" element={<ProfilePage />} />
           </Routes>
         </main>
         <Footer />
