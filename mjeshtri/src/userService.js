@@ -11,14 +11,14 @@ const getAuthHeaders = () => {
 };
 
 export const getCurrentUserProfile = async () => {
-  const res = await axios.get(`${API_BASE_URL}/api/users/me`, {
+  const res = await axios.get(`${API_BASE_URL}/api/user/me`, {
     headers: getAuthHeaders(),
   });
   return res.data;
 };
 
 export const updateCurrentUserProfile = async (data) => {
-  const res = await axios.put(`${API_BASE_URL}/api/users/me`, data, {
+  const res = await axios.put(`${API_BASE_URL}/api/user/me`, data, {
     headers: getAuthHeaders(),
   });
   return res.data;
@@ -49,5 +49,16 @@ export const updateBookingStatus = async (bookingId, newStatus) => {
       },
     }
   );
+  return res.data;
+};
+
+export const submitReview = async (payload) => {
+  // payload: { BookingId, Rating, ReviewComment }
+  const res = await axios.patch(`${API_BASE_URL}/api/booking/review`, payload, {
+    headers: {
+      'Content-Type': 'application/json',
+      ...getAuthHeaders(),
+    },
+  });
   return res.data;
 };
