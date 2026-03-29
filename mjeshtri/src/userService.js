@@ -62,3 +62,32 @@ export const submitReview = async (payload) => {
   });
   return res.data;
 };
+
+export const getAllUsers = async () => {
+  const token = localStorage.getItem("token");
+  if (!token) {
+    throw new Error("No auth token found. Please log in.");
+  }
+
+  const res = await axios.get(`${API_BASE_URL}/api/user/all`, {
+    headers: getAuthHeaders(),
+  });
+  return res.data;
+};
+
+export const deleteUser = async (userId) => {
+  const res = await axios.delete(`${API_BASE_URL}/api/user/${userId}`, {
+    headers: getAuthHeaders(),
+  });
+  return res.data;
+};
+
+export const updateUser = async (userId, data) => {
+  const res = await axios.put(`${API_BASE_URL}/api/user/${userId}`, data, {
+    headers: {
+      'Content-Type': 'application/json',
+      ...getAuthHeaders(),
+    },
+  });
+  return res.data;
+};

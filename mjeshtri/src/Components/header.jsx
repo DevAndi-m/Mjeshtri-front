@@ -20,12 +20,18 @@ const Header = () => {
           <Link to="/marketplace" className={`hover:text-blue-600 ${location.pathname === "/marketplace" ? "text-blue-600" : ""}`}>Marketplace</Link>
           <Link to="/about" className={`hover:text-blue-600 ${location.pathname === "/about" ? "text-blue-600" : ""}`}>About</Link>
           <Link to="/contact" className={`hover:text-blue-600 ${location.pathname === "/contact" ? "text-blue-600   " : ""}`}>Contact</Link>
+           {user.role === "Admin" && (
+                <Link to="/admin" className="text-gray-700 font-medium hover:text-blue-600">
+                  Admin Dashboard
+                </Link>
+              )}
         </div>
 
         {/* Auth Area */}
         <div className="flex items-center space-x-4">
           {user ? (
             <>
+             
               <Link to='/profile' className="text-gray-700 font-medium hower:text-blue-600">
                 {user.fullName}
               </Link>

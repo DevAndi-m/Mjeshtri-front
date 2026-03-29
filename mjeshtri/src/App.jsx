@@ -1,4 +1,5 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { useAuth } from './context/authContext';
 import Header from './Components/header';
 import Home from './pages/HomePage.jsx';
 import About from './pages/AboutPage.jsx';
@@ -10,8 +11,11 @@ import ContactPage from './pages/ContactPage.jsx';
 import MarketplacePage from './pages/MarketplacePage.jsx';
 import ExpertPage from './pages/ExpertPage.jsx';
 import ProfilePage from './pages/ProfilePage.jsx';
+import AdminPage from './pages/AdminPage.jsx';
 
 function App() {
+  const { user, isAdmin } = useAuth();
+
   return ( 
     <Router>
       <div className="min-h-screen bg-gray-50">
@@ -27,6 +31,14 @@ function App() {
             <Route path="*" element={<NoPage />} />
             <Route path="/Expert/:id" element={<ExpertPage />} />
             <Route path="/profile" element={<ProfilePage />} />
+            <Route
+              path="/admin"
+              element={
+                isAdmin
+                  ? <AdminPage />
+                  : <Navigate to={user ? "/profile" : "/login"} replace />
+              }
+            />
           </Routes>
         </main>
         <Footer />
