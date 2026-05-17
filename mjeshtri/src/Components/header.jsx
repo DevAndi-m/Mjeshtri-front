@@ -18,6 +18,7 @@ const Header = () => {
         <div className="hidden md:flex space-x-8 font-medium text-gray-600">
           <Link to="/" className={`hover:text-blue-600 ${location.pathname === "/" ? "text-blue-600" : ""}`}>Home</Link>
           <Link to="/marketplace" className={`hover:text-blue-600 ${location.pathname === "/marketplace" ? "text-blue-600" : ""}`}>Marketplace</Link>
+          <Link to="/players-teams" className={`hover:text-blue-600 ${location.pathname === "/players-teams" ? "text-blue-600" : ""}`}>Players & Teams</Link>
           <Link to="/about" className={`hover:text-blue-600 ${location.pathname === "/about" ? "text-blue-600" : ""}`}>About</Link>
           <Link to="/contact" className={`hover:text-blue-600 ${location.pathname === "/contact" ? "text-blue-600   " : ""}`}>Contact</Link>
            {user && user.role === "Admin" && (

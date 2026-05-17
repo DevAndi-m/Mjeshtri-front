@@ -12,6 +12,7 @@ import MarketplacePage from './pages/MarketplacePage.jsx';
 import ExpertPage from './pages/ExpertPage.jsx';
 import ProfilePage from './pages/ProfilePage.jsx';
 import AdminPage from './pages/AdminPage.jsx';
+import PlayersTeamsPage from './pages/PlayersTeamsPage.jsx';
 
 function App() {
   const { user, isAdmin } = useAuth();
@@ -28,6 +29,7 @@ function App() {
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<SignUpPage />} />
+            <Route path="/players-teams" element={<PlayersTeamsPage />} />
             <Route path="*" element={<NoPage />} />
             <Route path="/Expert/:id" element={<ExpertPage />} />
             <Route path="/profile" element={<ProfilePage />} />
