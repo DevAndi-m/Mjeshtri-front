@@ -19,7 +19,7 @@ const CardSection = ({ filters }) => {
                         maxPrice: filters.maxPrice
                     }
                 });
-                setExperts(response.data);
+                setExperts(Array.isArray(response.data) ? response.data : []);
             } catch (error) {
                 console.error("Error fetching experts:", error);
             } finally {

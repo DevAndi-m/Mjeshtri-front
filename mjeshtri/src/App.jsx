@@ -10,6 +10,8 @@ import ContactPage from './pages/ContactPage.jsx';
 import MarketplacePage from './pages/MarketplacePage.jsx';
 import ExpertPage from './pages/ExpertPage.jsx';
 import ProfilePage from './pages/ProfilePage.jsx';
+import TestPage from './pages/TestPage.jsx';
+import TestPage2 from './pages/TestPage2.jsx';
 
 function App() {
   return ( 
@@ -27,6 +29,8 @@ function App() {
             <Route path="*" element={<NoPage />} />
             <Route path="/Expert/:id" element={<ExpertPage />} />
             <Route path="/profile" element={<ProfilePage />} />
+            <Route path="/test" element={<TestPage />} />
+            <Route path="/test2" element={<TestPage2 />} />
           </Routes>
         </main>
         <Footer />
