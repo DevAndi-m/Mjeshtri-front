@@ -21,6 +21,8 @@ const Header = () => {
           <Link to="/about" className={`hover:text-blue-600 ${location.pathname === "/about" ? "text-blue-600" : ""}`}>About</Link>
           <Link to="/contact" className={`hover:text-blue-600 ${location.pathname === "/contact" ? "text-blue-600   " : ""}`}>Contact</Link>
           <Link to="/test" className={`hover:text-blue-600 ${location.pathname === "/test" ? "text-blue-600   " : ""}`}>Test</Link>
+          <Link to="/test3" className={`hover:text-blue-600 ${location.pathname === "/test3" ? "text-blue-600   " : ""}`}>Test3</Link>
+          <Link to="/test4" className={`hover:text-blue-600 ${location.pathname === "/test4" ? "text-blue-600" : ""}`}>Test4</Link>
         </div>
 
         {/* Auth Area */}

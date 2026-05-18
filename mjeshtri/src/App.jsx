@@ -12,6 +12,8 @@ import ExpertPage from './pages/ExpertPage.jsx';
 import ProfilePage from './pages/ProfilePage.jsx';
 import TestPage from './pages/TestPage.jsx';
 import TestPage2 from './pages/TestPage2.jsx';
+import TestPage3 from './pages/TestPage3.jsx';
+import TestPage4 from './pages/TestPage4.jsx';
 
 function App() {
   return ( 
@@ -31,6 +33,8 @@ function App() {
             <Route path="/profile" element={<ProfilePage />} />
             <Route path="/test" element={<TestPage />} />
             <Route path="/test2" element={<TestPage2 />} />
+            <Route path="/test3" element={<TestPage3 />} />
+            <Route path="/test4" element={<TestPage4 />} />
           </Routes>
         </main>
         <Footer />
